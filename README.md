@@ -19,30 +19,26 @@ Inspired by [xzer/wlanprofilemanager](https://github.com/xzer/wlanprofilemanager
 - Copy the `profiles.sample.psd1` to `profiles.psd1`
 - Customize your `profiles.psd1` file: add your own profile using the WiFi network name (SSID)
 
-Now, when you run `wlanprofilemanager.bat` as administrator, the profile will automatically be applied depending on the current network connected to.
-
 Logs can be found in .\logs folder.
 
-## Make it run automatically
-
-### By using the tasks installer
-
-Run as administrator one of the following file:
- - `wlanprofilemanager-install-task-with-notification.bat` in order to install all needed tasks and get a notification when a profile is applied
- - `wlanprofilemanager-install-task-no-notification.bat` in order to install only the mandatory task
-
-### By creating the task manually
-
-Want to handle this yourself? That's fine! Here's how:
+## Installation
 
 - Register a new task in Task Scheduler (Start -> Search for Tasks Scheduler)
-    - pick up the wlanprofilemanager.bat as the operation of the task
-    - make sure the task will be executed by user "SYSTEM"
-    - define the trigger as following:
-        - start at: event
-        - basic, log: Microsoft-Windows-WLAN-AutoConfig/Operational
+    - Create Task
+    - Change User to **SYSTEM** 
+    - Define the trigger as following:
+        - Begin the task: On an event
+        - Select Basic button from the left side.
+        - Log: Microsoft-Windows-WLAN-AutoConfig/Operational
         - source: WLAN-AutoConfig
         - event id: 11001
+    - Set the actions as following:
+        - Start a Program
+        - Program: "C:\Program Files\PowerShell\7\pwsh.exe"
+        - Argument: "**PATH**\wlanprofilemanager-ps\wlanprofilemanager-ps.ps1"
+        - Start in: "**PATH**\wlanprofilemanager-ps\"
+    - Disable all the condition in the next tab.
+    - Click OK and you're done.
 
 # License
 
