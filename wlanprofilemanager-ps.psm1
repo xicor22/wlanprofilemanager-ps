@@ -149,53 +149,6 @@ Function LockFileRemove() {
 
 <#
 .SYNOPSIS
-    Set the content of the notify file
-    This file is used for the 'notify' task (passing data from a system process to a user process)
-
-.INPUTS
-    None
-
-.OUTPUTS
-    None
-#>
-Function NotifyFileSet($content) {
-    $content | Out-File $script:NOTIFY_FILEPATH
-}
-
-<#
-.SYNOPSIS
-    Get the content of the notify file
-    This file is used for the 'notify' task (passing data from a system process to a user process)
-
-.INPUTS
-    None
-
-.OUTPUTS
-    [string] file content
-#>
-Function NotifyFileGet() {
-    if (Test-Path $script:NOTIFY_FILEPATH) {
-        return Get-Content -Path $script:NOTIFY_FILEPATH
-    }
-}
-
-<#
-.SYNOPSIS
-    Remove the notify file
-    This file is used for the 'notify' task (passing data from a system process to a user process)
-
-.INPUTS
-    None
-
-.OUTPUTS
-    None
-#>
-Function NotifyFileRemove() {
-    Remove-Item $script:NOTIFY_FILEPATH -Force -confirm:$false 2>&1 | out-null
-}
-
-<#
-.SYNOPSIS
     Check if the config file containing the profiles is available
 
 .INPUTS
