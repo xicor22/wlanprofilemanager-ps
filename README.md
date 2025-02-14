@@ -42,4 +42,4 @@ Logs can be found in .\logs folder.
 
 # License
 
-MIT License - see LICENSE file
+MIT License - see [LICENSE](https://github.com/xicor22/wlanprofilemanager-ps/blob/master/LICENSE) file
