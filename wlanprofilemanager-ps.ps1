@@ -216,10 +216,6 @@ try {
         }
     }
 
-    if ($has_changed) {
-        InvokeNotifyTask "Applied profile $profile_applied on $currentItfAlias"
-    }
-
     if ($need_restart -or ($has_changed -and $optItfRestart -eq $OPT_ITFRESTART_ALWAYS)) {
         if ($optItfRestart -ne $OPT_ITFRESTART_NEVER)
         {
@@ -257,8 +253,6 @@ catch {
 finally {
     # Remove lock file
     LockFileRemove
-    # Remove notify file
-    NotifyFileRemove
 
     # Stop transcript
     LogTranscriptStop
